@@ -14,20 +14,42 @@ function Word(answer) {
     this.answer = answer;
     this.answerArr = [];
 
+    // takes answer and splits each letter into a string array
     this.charWord = function () {
-        var wordLetters = this.answer.split();
-        for (i = 0; i < wordLetters.length; i++) {
-            this.answerArr.push(new letter(wordLetters[i]));
+        for (i = 0; i < answer.length; i++) {
+            this.answerArr.push(new letter(answer[i]));
         }
-
     };
 
-    this.userGuess = function (something) {
-        
+    // takes user's letter guess and checks it against answerArr
+    this.userGuess = function (gameGuess) {
+        for (i = 0; i < this.answerArr; i++) {
+            if (this.answerArr[i].input === gameGuess) {
+                this.answerArr[i].choice = true;
+            } else {this.answerArr[i].choice = false}
+        };
+    };
+
+    //concatenate answer strings (blanks, correct guess) into a one string
+    this.printWord = function (userLetter) {
+        for (i = 0; i < this.answerArr; i++) {
+            // if guessed userString + answerArr[i].input
+            var char = this.answerArr[i].input;
+            if (userLetter === char) {
+                console.log(char)
+            }
+            // else
+        }
+        console.log(userString)
     }
 };
 
 
 
+// var testWord = new Word("mask");
+//console.log(testWord);
+// testWord.charWord();
+
+// console.log(testWord);
 
 module.exports = Word;
